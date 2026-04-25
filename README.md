@@ -2,7 +2,7 @@
 
 YASB widget showing Claude.ai session and weekly usage limits.
 
-**Preview:** ⚡ 42% 3h 29m 📅 39% 2d 5h
+![preview](https://raw.githubusercontent.com/n9tcoder/claude-usage-yasb/main/preview.png)
 
 Percentages turn yellow when above 85%.
 

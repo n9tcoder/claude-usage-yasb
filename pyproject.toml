@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "claude-usage-yasb"
-version = "1.0.5"
+version = "1.0.6"
 description = "YASB widget showing Claude.ai session and weekly usage limits"
 readme = "README.md"
 license = { text = "MIT" }
