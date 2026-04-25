@@ -1,0 +1,2 @@
+[console_scripts]
+claude-usage-yasb = claude_usage_yasb.__main__:main

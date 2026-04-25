@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "claude-usage-yasb"
+version = "1.0.5"
+description = "YASB widget showing Claude.ai session and weekly usage limits"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "apescodes" }]
+requires-python = ">=3.8"
+keywords = ["yasb", "claude", "widget", "statusbar", "glazewm"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: Microsoft :: Windows",
+    "Topic :: Utilities",
+]
+dependencies = [
+    "curl_cffi>=0.5",
+    "pycryptodome>=3.0",
+]
+
+[project.optional-dependencies]
+chrome = ["pywin32"]
+
+[project.scripts]
+claude-usage-yasb = "claude_usage_yasb.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["claude_usage_yasb*"]
