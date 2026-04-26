@@ -5,6 +5,7 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 import json
 import os
+import time
 from datetime import datetime, timezone
 
 from . import firefox, chrome
@@ -53,22 +54,32 @@ def main():
 
     try:
         from curl_cffi import requests as cf_requests
-        resp = cf_requests.get(
-            f'https://claude.ai/api/organizations/{org_id}/usage',
-            impersonate='firefox',
-            timeout=5,
-            headers={
-                'Accept': 'application/json',
-                'anthropic-client-platform': 'web_claude_ai',
-                'anthropic-client-version': '1.0.0',
-                'anthropic-device-id': device_id,
-                'Referer': 'https://claude.ai/settings/usage',
-            },
-            cookies={
-                'sessionKey': session_key,
-                'anthropic-device-id': device_id,
-            }
-        )
+
+        resp = None
+        for attempt in range(3):
+            try:
+                resp = cf_requests.get(
+                    f'https://claude.ai/api/organizations/{org_id}/usage',
+                    impersonate='firefox',
+                    timeout=8,
+                    headers={
+                        'Accept': 'application/json',
+                        'anthropic-client-platform': 'web_claude_ai',
+                        'anthropic-client-version': '1.0.0',
+                        'anthropic-device-id': device_id,
+                        'Referer': 'https://claude.ai/settings/usage',
+                    },
+                    cookies={
+                        'sessionKey': session_key,
+                        'anthropic-device-id': device_id,
+                    }
+                )
+                break
+            except Exception:
+                if attempt < 2:
+                    time.sleep(5)
+                else:
+                    raise
 
         if resp.status_code != 200:
             print('Claude: auth expired')

@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: claude-usage-yasb
-Version: 1.0.5
+Version: 1.0.7
 Summary: YASB widget showing Claude.ai session and weekly usage limits
 Author: apescodes
 License: MIT
@@ -19,7 +19,7 @@ Requires-Dist: pywin32; extra == "chrome"
 
 YASB widget showing Claude.ai session and weekly usage limits.
 
-**Preview:** ⚡ 42% 3h 29m 📅 39% 2d 5h
+![preview](https://raw.githubusercontent.com/n9tcoder/claude-usage-yasb/main/preview.png)
 
 Percentages turn yellow when above 85%.
 
